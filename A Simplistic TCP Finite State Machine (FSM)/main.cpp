@@ -39,7 +39,7 @@ unsigned int how_often(vector<int> data, unsigned int lookUpValue) {
 
 
 
-std::string traverse_TCP_states(const std::vector<std::string>& events) {
+string traverse_TCP_states(const vector<string>& events) {
     map<string, map<string, string>> stateTransitions;
 
     stateTransitions["CLOSED"]["APP_PASSIVE_OPEN"] = "LISTEN";
