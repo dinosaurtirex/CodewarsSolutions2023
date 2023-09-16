@@ -41,7 +41,6 @@ unsigned int how_often(vector<int> data, unsigned int lookUpValue) {
 
 string traverse_TCP_states(const vector<string>& events) {
     map<string, map<string, string>> stateTransitions;
-
     stateTransitions["CLOSED"]["APP_PASSIVE_OPEN"] = "LISTEN";
     stateTransitions["CLOSED"]["APP_ACTIVE_OPEN"] = "SYN_SENT";
     stateTransitions["LISTEN"]["RCV_SYN"] = "SYN_RCVD";
@@ -62,17 +61,14 @@ string traverse_TCP_states(const vector<string>& events) {
     stateTransitions["TIME_WAIT"]["APP_TIMEOUT"] = "CLOSED";
     stateTransitions["CLOSE_WAIT"]["APP_CLOSE"] = "LAST_ACK";
     stateTransitions["LAST_ACK"]["RCV_ACK"] = "CLOSED";
-
-    string fromState = "CLOSED";
-    for (auto element : events)
-    {
+    string startState = "CLOSED";
+    for (auto element : events) {
         string event = element;
-        fromState = stateTransitions[fromState][event];
+        startState = stateTransitions[startState][event];
     }
-
-    if (fromState.size() == 0)
+    if (startState.size() == 0)
         return "ERROR";
-    return fromState;
+    return startState;
 }
 
 
