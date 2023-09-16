@@ -63,8 +63,7 @@ string traverse_TCP_states(const vector<string>& events) {
     stateTransitions["LAST_ACK"]["RCV_ACK"] = "CLOSED";
     string startState = "CLOSED";
     for (auto element : events) {
-        string event = element;
-        startState = stateTransitions[startState][event];
+        startState = stateTransitions[startState][element];
     }
     if (startState.size() == 0)
         return "ERROR";
