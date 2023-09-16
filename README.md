@@ -14,3 +14,4 @@ Here you can find solutions for this tasks:
 * Remove String Spaces
 * Return Negative
 * Tribonacci Sequence
+* A Simplistic TCP Finite State Machine (FSM)
