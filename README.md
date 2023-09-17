@@ -15,3 +15,5 @@ Here you can find solutions for this tasks:
 * Return Negative
 * Tribonacci Sequence
 * A Simplistic TCP Finite State Machine (FSM)
+* Coloured Triangles
+* Insane Coloured Triangles
