@@ -18,3 +18,4 @@ Here you can find solutions for this tasks:
 * Coloured Triangles
 * Insane Coloured Triangles
 * Find heavy ball - level master
+* Base-2
