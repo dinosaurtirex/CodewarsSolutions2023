@@ -1,135 +1,58 @@
-#define _USE_MATH_DEFINES
-
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <chrono>
-#include <map>
-#include <fstream>
 #include <string>
-
+#include <iostream>
+#include <chrono>
 using namespace std;
 
+// Степени числа 3
+const int powersOfThree[12] = { 1, 3, 9, 27, 81, 243, 729, 2187, 6561, 19683, 59049, 177147 };
 
-void print_vector(vector<int> data)
+// Преобразование символа в целое число, используя ASCII
+int charToInt(char c)
 {
-    for (int i = 0; i < data.size(); i++) 
+    switch (static_cast<int>(c))
     {
-        cout << data[i] << ",";
+    case 82: return 0; // R
+    case 71: return 1; // G
+    case 66: return 2; // B
     }
-    cout << endl;
+    return -1;
 }
 
-unsigned int how_often(vector<int> data, unsigned int lookUpValue) {
-    unsigned int total = 0;
-    for (int i = 0; i < data.size(); i++) {
-        if (data[i] == lookUpValue)
-            total += 1;
-    }
-    return total;
-}
-
-
-bool is_in(const string& data, char lookUpValue) {
-    for (auto value : data) {
-        if (value == lookUpValue)
-            return true;
-    }
-    return false;
-}
-
-
-char getNextChar(const string& doublechar) {
-    const vector<char> defaultCharSet = {'R','G','B'};
-    if (doublechar[0] == doublechar[1])
-        return doublechar[0];
-    for (auto schar : defaultCharSet) {
-        if (!is_in(doublechar, schar)) {
-            return schar;
-        }
-    }
-}
-
-
-// Function to convert a number to base 3 and return the number of digits
-unsigned convertToBase3(unsigned n, unsigned max, vector<unsigned>& output) {
-    unsigned i = 0;
-    while (i < max && n > 0) {
-        output[i] = n % 3;
-        n /= 3;
-        i++;
-    }
-    return i;
-}
-
-// Function to calculate the binomial coefficient for n < 3
-unsigned binomialCoefficientMax2(unsigned n, unsigned k) {
-    if (n < k)
-        return 0;
-    switch (n) {
-    case 0:
-    case 1:
-        return 1;
-    case 2:
-        return 1 + (k == 1);
-    default:
-        return 0;
-    }
-}
-
-// Function to apply Lucas's theorem for p = 3
-unsigned lucasTheorem3(unsigned lenN, const vector<unsigned>& digitsN,
-    unsigned lenK, const vector<unsigned>& digitsK) {
-    unsigned product = 1;
-    for (unsigned i = 0; i < lenN; i++) {
-        unsigned n_i = digitsN[i];
-        unsigned k_i = (i < lenK) ? digitsK[i] : 0;
-        product = (product * binomialCoefficientMax2(n_i, k_i)) % 3;
-    }
-    return product % 3;
-}
-
-// Function to convert from 012 to RGB
-char intToChar(int i) {
-    switch (i) {
+// Преобразование целого числа в символ
+char intToChar(int i)
+{
+    switch (i)
+    {
     case 0: return 'R';
     case 1: return 'G';
     case 2: return 'B';
-    default:
-        return '\0';
     }
+    return 'A';
 }
 
-// Function to convert from RGB to 012
-unsigned charToInt(char c) {
-    switch (c) {
-    case 'R': return 0;
-    case 'G': return 1;
-    case 'B': return 2;
-    default:
-        return 3;
-    }
-}
+char triangle(const string& input)
+{
+    string currentResult = input;
+    string currentLine = input;
 
-char triangle(const string& userInput) {
-    const char* input = userInput.c_str();
-    unsigned sum = 0;
-    const int n = userInput.length();
+    while (currentLine.size() > 1)
+    {
+        currentResult.clear();
+        int n = currentLine.length() - 1;
+        int nearestPower = 1;
+        for (int powerIndex = 0; powerIndex < 12; ++powerIndex)
+        {
+            if (n >= powersOfThree[powerIndex]) nearestPower = powersOfThree[powerIndex];
+            else break;
+        }
 
-    vector<unsigned> digitsN(11);
-    unsigned lenN = convertToBase3(n - 1, 11, digitsN);
-
-    for (unsigned km1 = 0; km1 < n; km1++) {
-        vector<unsigned> digitsK(11);
-        unsigned lenK = convertToBase3(km1, 11, digitsK);
-
-        unsigned Cnk_mod3 = lucasTheorem3(lenN, digitsN, lenK, digitsK);
-        sum = (sum + Cnk_mod3 * charToInt(input[km1])) % 3;
+        int sizeOfArray = (n - nearestPower + 1);
+        for (int position = 0; position < sizeOfArray; ++position)
+            currentResult.push_back(intToChar((2 * (charToInt(currentLine[position]) + charToInt(currentLine[n - position]))) % 3));
+        currentLine = currentResult;
     }
 
-    int sign = (n % 2) * 2 - 1;
-    int sum_mod3 = (3 + (sign * (int)(sum % 3))) % 3;
-    return intToChar(sum_mod3);
+    return currentResult[0];
 }
 
 
