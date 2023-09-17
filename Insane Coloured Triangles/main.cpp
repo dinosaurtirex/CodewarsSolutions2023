@@ -40,6 +40,7 @@ char triangle(const string& input)
         currentResult.clear();
         int n = currentLine.length() - 1;
         int nearestPower = 1;
+        // Получаем необходимое число итераций 
         for (int powerIndex = 0; powerIndex < 12; ++powerIndex)
         {
             if (n >= powersOfThree[powerIndex]) nearestPower = powersOfThree[powerIndex];
@@ -48,6 +49,7 @@ char triangle(const string& input)
 
         int sizeOfArray = (n - nearestPower + 1);
         for (int position = 0; position < sizeOfArray; ++position)
+            // Вычисляем цвет вершины
             currentResult.push_back(intToChar((2 * (charToInt(currentLine[position]) + charToInt(currentLine[n - position]))) % 3));
         currentLine = currentResult;
     }
@@ -58,10 +60,10 @@ char triangle(const string& input)
 
 int main()
 {
-    cout << triangle({ "B" }) << " : B" << endl;
-    cout << triangle({ "GB" }) << " : R" << endl;
-    cout << triangle({ "RRR" }) << " : R" << endl;
-    cout << triangle({ "RBRGBRBGGRRRBGBBBGG" }) << " : G" << endl;
+    //cout << triangle({ "B" }) << " : B" << endl;
+    //cout << triangle({ "GB" }) << " : R" << endl;
+    //cout << triangle({ "RRR" }) << " : R" << endl;
+    //cout << triangle({ "RBRGBRBGGRRRBGBBBGG" }) << " : G" << endl;
     auto start = chrono::high_resolution_clock::now();
     cout << "Start build huge triangle" << endl;
     string hugeTriangle = "";
