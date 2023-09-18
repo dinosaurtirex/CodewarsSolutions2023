@@ -19,3 +19,6 @@ Here you can find solutions for this tasks:
 * Insane Coloured Triangles
 * Find heavy ball - level master
 * Base-2
+* Convert string to camel case
+* Stop gninnipS My sdroW!
+* Valid Braces
