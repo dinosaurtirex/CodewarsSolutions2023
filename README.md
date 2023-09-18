@@ -23,3 +23,4 @@ Here you can find solutions for this tasks:
 * Stop gninnipS My sdroW!
 * Valid Braces
 * Magnet particules in boxes
+* Number of integer partitions
