@@ -22,3 +22,4 @@ Here you can find solutions for this tasks:
 * Convert string to camel case
 * Stop gninnipS My sdroW!
 * Valid Braces
+* Magnet particules in boxes
