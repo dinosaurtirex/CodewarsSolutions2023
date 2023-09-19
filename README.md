@@ -24,3 +24,5 @@ Here you can find solutions for this tasks:
 * Valid Braces
 * Magnet particules in boxes
 * Number of integer partitions
+* Explosive Sum
+* Strings Mix
