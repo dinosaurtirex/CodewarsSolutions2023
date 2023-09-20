@@ -26,3 +26,4 @@ Here you can find solutions for this tasks:
 * Number of integer partitions
 * Explosive Sum
 * Strings Mix
+* The boolean order
