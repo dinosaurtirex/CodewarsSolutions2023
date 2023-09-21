@@ -27,3 +27,4 @@ Here you can find solutions for this tasks:
 * Explosive Sum
 * Strings Mix
 * The boolean order
+* Play with two Strings
