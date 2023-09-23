@@ -9,11 +9,13 @@
 * Insane Coloured Triangles
 * Magnet particules in boxes
 * Multiples of 3 or 5
+* Multiplying numbers as strings
 * Number of integer partitions
 * Number of trailing zeros of N!
 * Play with two Strings
 * Remove String Spaces
 * Return Negative
+* Shortest Knight Path
 * SOLVED.md
 * Stop gninnipS My sdroW!
 * Strings Mix
