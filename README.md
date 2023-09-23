@@ -30,3 +30,4 @@ Here you can find solutions for this tasks:
 * The boolean order
 * Tribonacci Sequence
 * Valid Braces
+* Multiplying numbers as strings
