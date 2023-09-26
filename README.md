@@ -33,4 +33,5 @@ Here you can find solutions for this tasks:
 * Tribonacci Sequence
 * Valid Braces
 * Mystery Function
+* Sum Strings as Numbers
 
